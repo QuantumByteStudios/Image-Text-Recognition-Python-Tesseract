@@ -1,6 +1,6 @@
 
 # THIS IS RAW CODE NOT TO RUN!!
-
+# LINUX CODE!!
 # sudo apt install tesseract
 
 import os
