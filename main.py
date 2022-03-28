@@ -30,7 +30,7 @@ def convertTuple(tup):
 def uploadFile():
 
     f_types = [('PNG Files', '*.png'), ('Jpg Files', '*.jpg'),
-               ('JPEG Files', '*.jpeg')]   # type of files to select
+               ('JPEG Files', '*.jpeg')]
 
     filename = tk.filedialog.askopenfilename(multiple=True, filetypes=f_types)
     filenameStr = convertTuple(filename)
@@ -50,7 +50,7 @@ def uploadFile():
 
 # Main
 
-universalClear()  # Clear Terminal
+universalClear()
 
 my_w = tk.Tk()
 my_w.geometry("470x350")
@@ -69,5 +69,7 @@ b1.grid(row=2, column=2, columnspan=5)
 
 l3 = tk.Label(my_w, text=' ', width=30, font=my_font1)
 l3.grid(row=3, column=3, columnspan=5)
+
+universalClear()
 
 my_w.mainloop()
