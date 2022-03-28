@@ -1,2 +1,4 @@
 opencv-python
 pytesseract
+tk
+platform
