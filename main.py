@@ -12,7 +12,7 @@ import platform
 import cv2
 import pytesseract
 
-# Function Declearations
+# Function Declarations
 
 
 def universalClear():
