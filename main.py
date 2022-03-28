@@ -11,6 +11,7 @@ from tkinter import *
 import platform
 import cv2
 import pytesseract
+
 # Function Declearations
 
 
@@ -19,27 +20,6 @@ def universalClear():
         os.system("cls")
     else:
         os.system("clear")
-
-
-universalClear()  # Clear Terminal
-
-my_w = tk.Tk()
-my_w.geometry("470x350")  # Size of the window
-my_w.title('Image-Text Recognition')
-my_font1 = ('arial', 20, 'bold')
-
-l1 = tk.Label(my_w, text=' ', width=30, font=my_font1)
-l1.grid(row=0, column=0, columnspan=5)
-
-l2 = tk.Label(my_w, text='Select an Image File', width=30, font=my_font1)
-l2.grid(row=1, column=1, columnspan=5)
-
-b1 = tk.Button(my_w, text='Browse',
-               width=20, command=lambda: uploadFile())
-b1.grid(row=2, column=2, columnspan=5)
-
-l3 = tk.Label(my_w, text=' ', width=30, font=my_font1)
-l3.grid(row=3, column=3, columnspan=5)
 
 
 def convertTuple(tup):
@@ -67,5 +47,27 @@ def uploadFile():
     f.close
     universalClear()
 
+
+# Main
+
+universalClear()  # Clear Terminal
+
+my_w = tk.Tk()
+my_w.geometry("470x350")
+my_w.title('Image-Text Recognition')
+my_font1 = ('arial', 20, 'bold')
+
+l1 = tk.Label(my_w, text=' ', width=30, font=my_font1)
+l1.grid(row=0, column=0, columnspan=5)
+
+l2 = tk.Label(my_w, text='Select an Image File', width=30, font=my_font1)
+l2.grid(row=1, column=1, columnspan=5)
+
+b1 = tk.Button(my_w, text='Browse',
+               width=20, command=lambda: uploadFile())
+b1.grid(row=2, column=2, columnspan=5)
+
+l3 = tk.Label(my_w, text=' ', width=30, font=my_font1)
+l3.grid(row=3, column=3, columnspan=5)
 
 my_w.mainloop()
