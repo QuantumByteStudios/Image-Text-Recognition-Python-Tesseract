@@ -2,3 +2,9 @@ opencv-python
 pytesseract
 tk
 platform
+requests
+easyocr
+torch 
+torchvision 
+torchaudio
+matplotlib
