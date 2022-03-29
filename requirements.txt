@@ -8,3 +8,5 @@ torch
 torchvision 
 torchaudio
 matplotlib
+python-telegram-bot
+Telethon
