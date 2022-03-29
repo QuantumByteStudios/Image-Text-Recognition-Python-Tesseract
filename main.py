@@ -11,6 +11,9 @@ from tkinter import *
 import platform
 import cv2
 import pytesseract
+import requests
+
+APIKEY = '6T+BGcDXIKEZsfgv2WmDiQ==6Cs98DxRv6RzNm88'
 
 # Function Declarations
 
@@ -52,13 +55,19 @@ def uploadFile():
 
     # Creating a copy of image
     im2 = image.copy()
-    text = pytesseract.image_to_string(im2)
-    l4 = tk.Label(my_w, text=text, width=35, justify='center', font=my_font2)
+    firstFetchText = pytesseract.image_to_string(im2)
+    l4 = tk.Label(my_w, text='Check Terminal For Output!',
+                  width=35, justify='center', font=my_font2)
     l4.grid(row=4, column=4, columnspan=5)
+
+    # First Fetch
+    print(firstFetchText)
+    # Second Fetch
+
     f = open("Output.txt", 'w+')
-    f.write(text)
+    f.write("FIRST FETCH: "+firstFetchText)
     f.close
-    universalClear()
+    # universalClear()
 
 
 # Main
