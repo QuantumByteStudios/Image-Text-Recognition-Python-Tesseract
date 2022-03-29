@@ -29,14 +29,28 @@ def convertTuple(tup):
 
 def uploadFile():
 
-    f_types = [('PNG Files', '*.png'), ('Jpg Files', '*.jpg'),
-               ('JPEG Files', '*.jpeg')]
+    f_types = [('PNG Files', '*.png')]
 
     filename = tk.filedialog.askopenfilename(multiple=True, filetypes=f_types)
     filenameStr = convertTuple(filename)
     universalClear()
     image = cv2.imread(filenameStr)
     gray = cv2.cvtColor(image, cv2.COLOR_BGR2GRAY)
+
+    # Performing OTSU threshold
+    ret, thresh1 = cv2.threshold(
+        gray, 0, 255, cv2.THRESH_OTSU | cv2.THRESH_BINARY_INV)
+
+    rect_kernel = cv2.getStructuringElement(cv2.MORPH_RECT, (18, 18))
+
+    # Applying dilation on the threshold image
+    dilation = cv2.dilate(thresh1, rect_kernel, iterations=1)
+
+    # Finding contours
+    contours, hierarchy = cv2.findContours(dilation, cv2.RETR_EXTERNAL,
+                                           cv2.CHAIN_APPROX_NONE)
+
+    # Creating a copy of image
     im2 = image.copy()
     text = pytesseract.image_to_string(im2)
     l4 = tk.Label(my_w, text=text, width=35, justify='center', font=my_font2)
