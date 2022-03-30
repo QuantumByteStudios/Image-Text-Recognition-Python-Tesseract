@@ -9,13 +9,16 @@ import pytesseract
 import os
 import logging
 import platform
+import cv2
 
 try:
     from PIL import Image
 except ImportError:
     import Image
 
-the_updater = Updater("YOUR API KEY",
+BOT_KEY = "ApniBotKeyDaal"
+
+the_updater = Updater(BOT_KEY,
                       use_context=True)
 
 
@@ -44,10 +47,35 @@ def convert_image(update: Update, context: CallbackContext) -> None:
         file_id = update.message.photo[-1].get_file()
         img_name = str(chat_id)+'.png'
         file_id.download(img_name)
-        extracted_sting = (pytesseract.image_to_string(Image.open(img_name)))
-        if extracted_sting:
+
+        image = cv2.imread(img_name)
+        gray = cv2.cvtColor(image, cv2.COLOR_BGR2GRAY)
+
+        # Performing OTSU threshold
+        ret, thresh1 = cv2.threshold(
+            gray, 0, 255, cv2.THRESH_OTSU | cv2.THRESH_BINARY_INV)
+
+        rect_kernel = cv2.getStructuringElement(cv2.MORPH_RECT, (18, 18))
+
+        # Applying dilation on the threshold image
+        dilation = cv2.dilate(thresh1, rect_kernel, iterations=1)
+
+        # Finding contours
+        contours, hierarchy = cv2.findContours(dilation, cv2.RETR_EXTERNAL,
+                                               cv2.CHAIN_APPROX_NONE)
+
+        # Creating a copy of image
+        im2 = image.copy()
+        firstFetchText = pytesseract.image_to_string(im2)
+
+        # First Fetch
+        # print(firstFetchText)
+
+        # extracted_sting = (pytesseract.image_to_string(Image.open(img_name)))
+
+        if firstFetchText:
             update.message.reply_text(
-                ''+str(extracted_sting)+'\n\nImage-Text Generation: TextifyBot', reply_to_message_id=update.message.message_id)
+                ''+str(firstFetchText)+'\n\nImage-Text Generation: TextifyBot', reply_to_message_id=update.message.message_id)
         else:
             update.message.reply_text(constants.no_text_found)
 

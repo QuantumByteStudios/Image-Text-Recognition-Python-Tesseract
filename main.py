@@ -13,8 +13,6 @@ import cv2
 import pytesseract
 import requests
 
-APIKEY = '6T+BGcDXIKEZsfgv2WmDiQ==6Cs98DxRv6RzNm88'
-
 # Function Declarations
 
 
