@@ -10,13 +10,14 @@ import os
 import logging
 import platform
 import cv2
+import headers
 
 try:
     from PIL import Image
 except ImportError:
     import Image
 
-BOT_KEY = "ApniBotKeyDaal"
+BOT_KEY = "5150082185:AAGkewr2CEwxDXMi5vx_b5rQsx2iLdXL-K8"
 
 the_updater = Updater(BOT_KEY,
                       use_context=True)
