@@ -1,7 +1,6 @@
 opencv-python
 pytesseract
 tk
-platform
 requests
 easyocr
 torch 
