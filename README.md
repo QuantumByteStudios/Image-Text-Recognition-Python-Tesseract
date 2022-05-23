@@ -14,5 +14,5 @@ Linux Users!
 
 # Contributors
 
-<a href="https://github.com/SunilMakhija">SunilMakhija</a>: Telegram Bot Development<br>
+<a href="https://github.com/sunil89-stark">SunilMakhija</a>: Telegram Bot Development<br>
 <a href="https://github.com/Jatin2409">Jatin Ghind</a>: Project Documentation & Testing
