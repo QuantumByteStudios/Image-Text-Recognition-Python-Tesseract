@@ -4,7 +4,7 @@ A Python program that uses tesseract to detect text in images and convert it to 
 
 <br>
 
-Made With ❤️ by <a href="https://quantumbyteofficial.tech/">QuantumByteStudios</a> and Team
+Made With ❤️ by <a href="https://quantumbyte.studio/">QuantumByteStudios</a> and Team
 
 <br>
 
